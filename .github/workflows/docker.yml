@@ -32,4 +32,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: docker stop ylwawj-fe && docker pull sufuwang/ylwawj-fe && docker run -d -p 80:80 --name ylwawj-fe --rm sufuwang/ylwawj-fe
+          script: docker rm -f ylwawj-fe && docker pull sufuwang/ylwawj-fe && docker run -d -p 80:80 --name ylwawj-fe --rm sufuwang/ylwawj-fe

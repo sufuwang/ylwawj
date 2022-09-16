@@ -7,7 +7,7 @@ export default () => {
     <>
       <Result
         status="success"
-        title={`Count is ${count}`}
+        title={`Hi, Count is ${count}`}
         extra={[
           <Button type="primary" key="console" onClick={() => setCount(count + 1)}>
             Add Count
