@@ -39,11 +39,20 @@ export default defineConfig(({ mode }) => {
       autoImport({
         include: [/\.[t]sx?$/],
         imports: ['react'],
-        dts: path.resolve(__dirname, './src/types/auto-imports.d.ts'),
+        dts: path.resolve(__dirname, './src/types/auto-import.d.ts'),
+        eslintrc: {
+          enabled: true,
+          filepath: './.auto-import.json',
+          globalsPropValue: 'readonly',
+        },
       }),
     ],
     resolve: {
-      alias: { '@': path.resolve(__dirname, 'src/') },
+      alias: {
+        '@': path.resolve(__dirname, 'src/'),
+        '@comp': path.resolve(__dirname, 'src/components'),
+        '@page': path.resolve(__dirname, 'src/pages'),
+      },
     },
     css: {
       postcss: ctx => ({

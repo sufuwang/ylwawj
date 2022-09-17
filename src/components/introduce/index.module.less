@@ -1,0 +1,30 @@
+.intro {
+  
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0px 100px 0px 140px;
+  .timeline {
+    padding-top: 10px;
+    width: 600px;
+    .timelineItem {
+      &:hover {
+        color: #1890ff;
+        cursor: pointer;
+      }
+    }
+    .timelineSelectedItem {
+      font-weight: 700px;
+      color: #1890ff;
+    }
+  }
+  .card {
+    width: 600px;
+    height: 100%;
+    position: sticky;
+    top: 80px;
+    margin-bottom: 40px;
+  }
+}

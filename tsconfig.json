@@ -16,9 +16,9 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"],
+      "@page/*": ["src/pages/*"],
+      "@comp/*": ["src/components/*"],
     },
     "typeRoots": ["./node_modules/@types"],
 
