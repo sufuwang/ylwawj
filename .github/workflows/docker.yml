@@ -19,7 +19,7 @@ jobs:
 
       - name: Build & Push
         uses: actions/checkout@v3
-      - run: pwd && ls
+      - run: pwd && ls && node -v
       - run: yarn
       - run: yarn build
       - run: docker build -t sufuwang/ylwawj-fe -f ./nginx.dockerfile .
