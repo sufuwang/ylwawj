@@ -1,0 +1,39 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.cardPadding() {
+  :global {
+    .ant-card-body {
+      padding: 12px;
+    }
+  }
+}
+.container {
+  padding: 10px;
+  .header {
+    .row();
+    margin-bottom: 10px;
+    justify-content: space-between;
+  }
+  .content {
+    .row();
+    .card {
+      height: 92vh;
+      :global {
+        .ant-card-body {
+          height: 85vh;
+          overflow-y: scroll;
+        }
+      }
+      &:nth-child(1) {
+        width: 36%;
+        .cardPadding();
+      }
+      &:nth-child(2) {
+        flex: 1;
+        .cardPadding();
+      }
+    }
+  }
+}

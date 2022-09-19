@@ -5,6 +5,7 @@ import NotFound from '@page/notFound';
 import Home from '@page/home';
 import Intro from '@page/intro';
 import Contact from '@page/contact';
+import Admin from '@page/admin';
 
 interface TypePage {
   path: string;
@@ -27,5 +28,12 @@ export default [
     { path: '/intro', element: <Intro /> },
     { path: '/contact', element: <Contact /> },
   ]),
+  {
+    path: '/s',
+    children: [
+      { path: 'login', element: <Admin /> },
+      { path: 'admin', element: <Admin /> },
+    ],
+  },
   { path: '/*', element: <NotFound /> },
 ] as Array<RouteObject>;
