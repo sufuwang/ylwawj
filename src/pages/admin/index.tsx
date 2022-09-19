@@ -1,10 +1,8 @@
-import { Segmented, Card, Select } from 'antd';
-import type { SegmentedLabeledOption, SegmentedValue } from 'antd/lib/Segmented';
+import { Segmented, Card } from 'antd';
+import type { SegmentedLabeledOption, SegmentedValue } from 'antd/es/Segmented';
 import Video from './video';
 import Manage from './manage';
 import styles from './index.module.less';
-
-const { Option } = Select;
 
 const Options: (SegmentedLabeledOption & { key: string })[] = [
   { key: '新闻', label: '新闻中心', value: 'news', disabled: true },

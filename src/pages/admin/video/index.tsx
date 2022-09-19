@@ -1,6 +1,6 @@
 import { Button, Form, Input, Upload } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
-import styles from './index.module.less';
+// import styles from './index.module.less';
 
 const App = () => {
   const onFinish = (values: any) => {
