@@ -1,10 +1,12 @@
 import { Segmented, Card } from 'antd';
-import type { SegmentedLabeledOption, SegmentedValue } from 'antd/es/Segmented';
+import type { SegmentedProps } from 'antd';
 import Video from './video';
 import Manage from './manage';
 import styles from './index.module.less';
 
-const Options: (SegmentedLabeledOption & { key: string })[] = [
+type TypeOption = Exclude<SegmentedProps['options'][number], string | number> & { key: string; disabled: boolean };
+
+const Options: TypeOption[] = [
   { key: '新闻', label: '新闻中心', value: 'news', disabled: true },
   { key: '工程案例', label: '工程案例', value: 'example', disabled: true },
   { key: '视频', label: '视频中心', value: 'video', disabled: false },
@@ -13,7 +15,7 @@ const defaultOption = Options.find(d => d.disabled === false)!;
 
 export default () => {
   const [curKey, setKey] = useState(defaultOption);
-  const handleChangeSegment = (value: SegmentedValue) => {
+  const handleChangeSegment = (value: TypeOption['value']) => {
     setKey(Options.find(d => d.value === value) || defaultOption);
   };
   return (
