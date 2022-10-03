@@ -21,6 +21,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     server: { hmr: true },
+    envDir: '.',
     plugins: [
       react({
         include: ['**/*.tsx', '**/*.ts'],
@@ -52,6 +53,8 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, 'src/'),
         '@comp': path.resolve(__dirname, 'src/components'),
         '@page': path.resolve(__dirname, 'src/pages'),
+        '@util': path.resolve(__dirname, 'src/utils'),
+        '@hook': path.resolve(__dirname, 'src/hooks'),
       },
     },
     css: {

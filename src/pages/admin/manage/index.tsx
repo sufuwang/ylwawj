@@ -1,44 +1,21 @@
 import { Transfer } from 'antd';
 import styles from './index.module.less';
 
-const App = () => {
-  const [mockData, setMockData] = useState([]);
-  const [targetKeys, setTargetKeys] = useState([]);
+interface TypeProps {
+  activeData: string[];
+  data: any[];
+  setActiveData: (arg: string[]) => void;
+}
 
-  const getMock = () => {
-    const tempTargetKeys = [] as any;
-    const tempMockData = [] as any;
-
-    for (let i = 0; i < 20; i++) {
-      const data = {
-        key: i.toString(),
-        title: `content${i + 1}`,
-        description: `description of content${i + 1}`,
-        chosen: i % 2 === 0,
-      };
-      if (data.chosen) {
-        tempTargetKeys.push(data.key);
-      }
-      tempMockData.push(data);
-    }
-
-    setMockData(tempMockData);
-    setTargetKeys(tempTargetKeys);
-  };
-
-  useEffect(() => {
-    getMock();
-  }, []);
-
-  const handleChange = (newTargetKeys: any, direction: any, moveKeys: any) => {
-    console.log(newTargetKeys, direction, moveKeys);
-    setTargetKeys(newTargetKeys);
+const App = ({ data, activeData, setActiveData }: TypeProps) => {
+  const handleChange = (newTargetKeys: string[]) => {
+    setActiveData(newTargetKeys);
   };
 
   const renderItem = (item: any) => {
     const customLabel = (
       <span className="custom-item">
-        {item.title} - {item.description}
+        {item.title} - {item.desc}
       </span>
     );
     return {
@@ -50,14 +27,14 @@ const App = () => {
   return (
     <div className={styles.container}>
       <Transfer
-        dataSource={mockData}
+        dataSource={data}
         listStyle={{
           width: '100%',
           height: 'auto',
           maxHeight: 600,
         }}
         titles={['未发布的数据', '已发布的数据']}
-        targetKeys={targetKeys}
+        targetKeys={activeData}
         onChange={handleChange}
         render={renderItem}
       />

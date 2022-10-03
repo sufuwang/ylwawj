@@ -82,7 +82,6 @@ export default ({ children }: TypeProps) => {
       });
     }
   };
-  console.info(styles);
 
   return (
     <>

@@ -19,6 +19,8 @@
       "@/*": ["src/*"],
       "@page/*": ["src/pages/*"],
       "@comp/*": ["src/components/*"],
+      "@util/*": ["src/utils/*"],
+      "@hook/*": ["src/hooks/*"],
     },
     "typeRoots": ["./node_modules/@types"],
 

@@ -1,0 +1,41 @@
+.container {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  background-color: #58729B;
+  padding: 10px 16px;
+  animation: fadeInDown .4s;
+  opacity: .9;
+  h2 {
+    color: white;
+  }
+  h3 {
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    transform: translate3d(0, 40px, 0);
+    opacity: 0;
+  }
+
+  33% {
+    transform: translate3d(0, 40px, 0);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: none;
+    transform: none;
+    opacity: .9;
+  }
+}

@@ -1,32 +1,62 @@
 import { Card, Skeleton } from 'antd';
 import Container from '@comp/container';
 import Image from './5e4faa19cdcf8.jpg';
-import Video from '@comp/video';
 import styles from './index.module.less';
+import { TypeDetail } from '@page/home/useData';
+import useVideoPreview from '@/hooks/useVideoPreview';
+import Mask from '../cardMask';
 
 interface TypeProps {
   title: string;
-  type: 'image' | 'video';
-  dataSource: Array<any>;
+  type: 'album' | 'video';
+  dataSource: Array<TypeDetail | any>;
 }
 
-export default ({ title, type, dataSource }: TypeProps) => {
-  const [isShowVideo, setShowVideo] = useState(false);
+export default ({ title, dataSource }: TypeProps) => {
+  const { setShow } = useVideoPreview();
+  const [curId, setCurId] = useState(null);
 
-  const handleClick = () => {
-    setShowVideo(true);
+  const renderDetail = (data: TypeDetail) => {
+    const ds = {
+      type: '',
+      mask: '',
+      src: '',
+      isShow: false,
+    };
+    if ('video' in data) {
+      ds.type = 'video';
+      ds.mask = data.videoMask;
+      ds.src = data.video;
+    } else if ('album' in data) {
+      ds.type = 'album';
+      ds.mask = data.albumMask;
+      ds.src = data.album;
+    }
+    return (
+      <div className={styles.detail} onClick={() => setShow(true, ds.src)}>
+        <img className={styles.img} alt="" src={ds.mask ? `${import.meta.env.VITE_HOST}${ds.mask}` : Image} />
+        <Mask
+          isShow={curId === data.id}
+          title="测试一个"
+          desc="这个是一段不多不少的描述这个是一段不多不少的描述这个是一段不多不少的描述这个是一段不多不少的描述这个是一段不多不少的描述这个是一段不多不少的描述"
+        />
+      </div>
+    );
   };
 
   return (
     <>
-      <Video isShow={type === 'video' && isShowVideo} src={''} onHide={() => setShowVideo(false)} />
       <Container title={title}>
         <div className={styles.feed}>
-          {dataSource.map(d => (
-            <Card hoverable key={d} className={styles.card}>
-              <div className={styles.child}>
-                <img alt={d} src={Image} onClick={handleClick} />
-              </div>
+          {dataSource.map(item => (
+            <Card
+              hoverable
+              key={item.id || item}
+              className={styles.card}
+              onMouseEnter={() => setCurId(item.id)}
+              onMouseLeave={() => setCurId(null)}
+            >
+              {renderDetail(item)}
             </Card>
           ))}
           <Card key="lastCard" hoverable className={styles.lastCard} bordered={false}>
