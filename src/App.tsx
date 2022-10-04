@@ -2,7 +2,7 @@ import routes from '@/routes/index';
 import { useRoutes } from 'react-router-dom';
 import { ConfigProvider } from 'antd';
 import zhCN from 'antd/es/locale/zh_CN';
-import useVideoPreview from '@/hooks/useVideoPreview';
+import useVideoPreview from '@hook/useVideoPreview';
 
 const App = () => {
   const element = useRoutes(routes);

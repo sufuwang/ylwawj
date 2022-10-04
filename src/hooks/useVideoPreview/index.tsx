@@ -23,25 +23,18 @@ export default () => {
     if (isShow) {
       // message.info({ content: '点击任意区域可以退出预览', style: { top: 200 } });
       video.play();
-      ref.removeAttribute('style');
+      ref.setAttribute('style', `display:block;`);
     } else {
       video.pause();
       ref.setAttribute('style', `display:none;`);
     }
   };
 
-  useEffect(() => {
-    setShow(false);
-  }, []);
-
   return {
     getRef,
     setSrc,
     setShow,
     render() {
-      if (document.getElementById(VideoId)) {
-        return;
-      }
       return (
         <>
           {ReactDOM.createPortal(

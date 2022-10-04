@@ -88,7 +88,6 @@ export default ({ children }: TypeProps) => {
       <PageHeader
         className={styles.header}
         title="陕西杨凌我爱我家装饰装修有限责任公司"
-        // subTitle={<h1>12</h1>}
         extra={[
           <Menu
             key="menu"

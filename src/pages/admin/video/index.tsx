@@ -30,8 +30,6 @@ export default (props: TypeProps) => {
     });
     formData.set('type', 'video');
 
-    console.info('values:', values, formData);
-
     await fetch('http://localhost:3000/admin/create', {
       method: 'POST',
       body: formData,

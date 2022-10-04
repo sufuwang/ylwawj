@@ -7,7 +7,6 @@ import useData from './useData';
 
 export default () => {
   const { data } = useData();
-  console.info(data);
   return (
     <div className={styles.container}>
       {/* <Carousel /> */}

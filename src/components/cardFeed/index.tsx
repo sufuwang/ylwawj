@@ -3,7 +3,7 @@ import Container from '@comp/container';
 import Image from './5e4faa19cdcf8.jpg';
 import styles from './index.module.less';
 import { TypeDetail } from '@page/home/useData';
-import useVideoPreview from '@/hooks/useVideoPreview';
+import useVideoPreview from '@hook/useVideoPreview';
 import Mask from '../cardMask';
 
 interface TypeProps {

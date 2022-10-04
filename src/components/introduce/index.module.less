@@ -7,8 +7,8 @@
   justify-content: space-around;
   padding: 0px 100px 0px 140px;
   .timeline {
-    padding-top: 10px;
-    width: 600px;
+    padding-top: 40px;
+    width: 400px;
     .timelineItem {
       &:hover {
         color: #1890ff;
@@ -21,10 +21,26 @@
     }
   }
   .card {
-    width: 600px;
+    width: 800px;
     height: 100%;
     position: sticky;
     top: 80px;
     margin-bottom: 40px;
+    :global(.ant-card-body) {
+      padding: 10px;
+      padding-bottom: 0px;
+    }
+    .carousel {
+      padding-bottom: 0px;
+      .img {
+        width: fit-content !important;
+        height: calc(100vh - 340px);
+      }
+      :global(.slick-slide) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 }

@@ -1,13 +1,13 @@
-import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import App from '@/App';
 import 'antd/dist/antd.css';
+import { BrowserRouter } from 'react-router-dom';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
-const app = (
+
+root.render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>
+  </BrowserRouter>,
 );
-root.render(app);
