@@ -1,4 +1,4 @@
-// import Carousel from '@comp/carousel';
+import Carousel from '@comp/carousel';
 import CardFeed from '@comp/cardFeed';
 import Introduce from '@comp/introduce';
 import Contact from '@comp/contact';
@@ -9,7 +9,7 @@ export default () => {
   const { data } = useData();
   return (
     <div className={styles.container}>
-      {/* <Carousel /> */}
+      <Carousel />
       {/* <CardFeed title="工程案例" dataSource={data.video} type="album" /> */}
       <CardFeed title="视频中心" dataSource={data.video} type="video" />
       <Introduce />
