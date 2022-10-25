@@ -35,8 +35,8 @@ const items = [
   {
     label: '视频中心',
     key: 'video',
-    path: '/video',
-    disabled: true,
+    path: '#video',
+    disabled: false,
     icon: <VideoCameraOutlined />,
   },
   {

@@ -11,6 +11,10 @@ export default () => {
 
   const setSrc = (src: string) => {
     const ref = getRef();
+    if (src.startsWith('/')) {
+      ref?.setAttribute('src', src);
+      return;
+    }
     ref?.setAttribute('src', `${import.meta.env.VITE_HOST}${src}`);
   };
 
@@ -39,7 +43,7 @@ export default () => {
         <>
           {ReactDOM.createPortal(
             <div id={VideoContainerId} className={styles.container} onClick={() => setShow(false)}>
-              <video id={VideoId} controls />
+              <video id={VideoId} controls onClick={handle => handle.stopPropagation()} />
             </div>,
             document.body,
           )}

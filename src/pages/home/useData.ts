@@ -1,6 +1,7 @@
 import request from '@util/request';
+import mockData from '@mock/home/index';
 
-interface TypeCommonData {
+export interface TypeCommonData {
   id: number;
   isActive: boolean;
   title: string;
@@ -30,7 +31,7 @@ export default () => {
 
   const getData = async () => {
     const video = await request(`/admin/get?type=${type}`);
-    setData({ ...data, video });
+    setData({ ...data, video: video.isFailed ? mockData.video : video });
   };
 
   useEffect(() => {
