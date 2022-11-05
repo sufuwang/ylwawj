@@ -55,6 +55,7 @@ export default defineConfig(({ mode }) => {
         '@page': path.resolve(__dirname, 'src/pages'),
         '@util': path.resolve(__dirname, 'src/utils'),
         '@hook': path.resolve(__dirname, 'src/hooks'),
+        '@mock': path.resolve(__dirname, 'mock/'),
       },
     },
     css: {

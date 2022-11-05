@@ -11,7 +11,7 @@ export default () => {
     <div className={styles.container}>
       <Carousel />
       {/* <CardFeed title="工程案例" dataSource={data.video} type="album" /> */}
-      <CardFeed title="视频中心" dataSource={data.video} type="video" />
+      <CardFeed id="video" title="视频中心" dataSource={data.video} type="video" isShowExtra={false} />
       <Introduce />
       <Contact />
     </div>

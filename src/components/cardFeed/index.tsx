@@ -7,12 +7,14 @@ import useVideoPreview from '@hook/useVideoPreview';
 import Mask from '../cardMask';
 
 interface TypeProps {
+  id: string;
   title: string;
   type: 'album' | 'video';
   dataSource: Array<TypeDetail | any>;
+  isShowExtra: boolean;
 }
 
-export default ({ title, dataSource }: TypeProps) => {
+export default ({ id, title, dataSource, isShowExtra = true }: TypeProps) => {
   const { setShow } = useVideoPreview();
   const [curId, setCurId] = useState(null);
 
@@ -35,18 +37,14 @@ export default ({ title, dataSource }: TypeProps) => {
     return (
       <div className={styles.detail} onClick={() => setShow(true, ds.src)}>
         <img className={styles.img} alt="" src={ds.mask ? `${import.meta.env.VITE_HOST}${ds.mask}` : Image} />
-        <Mask
-          isShow={curId === data.id}
-          title="测试一个"
-          desc="这个是一段不多不少的描述这个是一段不多不少的描述这个是一段不多不少的描述这个是一段不多不少的描述这个是一段不多不少的描述这个是一段不多不少的描述"
-        />
+        <Mask isShow={curId === data.id} title={data.title} desc={data.desc} />
       </div>
     );
   };
 
   return (
     <>
-      <Container title={title}>
+      <Container id={id} title={title}>
         <div className={styles.feed}>
           {dataSource.map(item => (
             <Card
@@ -59,10 +57,12 @@ export default ({ title, dataSource }: TypeProps) => {
               {renderDetail(item)}
             </Card>
           ))}
-          <Card key="lastCard" hoverable className={styles.lastCard} bordered={false}>
-            <h1>查看更多</h1>
-            <Skeleton active paragraph={{ rows: 6 }} />
-          </Card>
+          {isShowExtra && (
+            <Card key="lastCard" hoverable className={styles.lastCard} bordered={false}>
+              <h1>查看更多</h1>
+              <Skeleton active paragraph={{ rows: 6 }} />
+            </Card>
+          )}
         </div>
       </Container>
     </>

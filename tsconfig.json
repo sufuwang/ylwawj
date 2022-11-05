@@ -21,6 +21,7 @@
       "@comp/*": ["src/components/*"],
       "@util/*": ["src/utils/*"],
       "@hook/*": ["src/hooks/*"],
+      "@mock/*": ["mock/*"],
     },
     "typeRoots": ["./node_modules/@types"],
 
@@ -43,6 +44,7 @@
     "src/**/*.tsx",
     "src/**/*.js",
     "src/**/*.jsx",
+    "mock/**/*.ts"
   ],
   "exclude": [
     "node_modules"
