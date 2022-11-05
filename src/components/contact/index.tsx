@@ -5,6 +5,23 @@ import YYZZImageSrc from './yyzz.jpg';
 import styles from './index.module.less';
 
 export default () => {
+  const [isShow, setShow] = useState(false);
+
+  const handle = () => {
+    const height = document.documentElement.scrollTop;
+    if (height > 1000 && !isShow) {
+      setShow(true);
+    }
+  };
+  useEffect(() => {
+    document.onscroll = handle;
+  }, []);
+  useEffect(() => {
+    if (isShow) {
+      document.onscroll = null;
+    }
+  }, [isShow]);
+
   return (
     <Container id="contact" title="联系我们">
       <Descriptions className={styles.container} bordered column={4}>
@@ -26,7 +43,7 @@ export default () => {
           <Image width={200} src={ImageSrc} />
         </Descriptions.Item> */}
         <Descriptions.Item label="企业资质" span={2}>
-          <Image width={200} src={YYZZImageSrc} />
+          {isShow && <Image width={200} src={YYZZImageSrc} />}
         </Descriptions.Item>
       </Descriptions>
     </Container>
