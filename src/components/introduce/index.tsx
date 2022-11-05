@@ -1,4 +1,4 @@
-import { Timeline, Card, Carousel } from 'antd';
+import { Timeline, Card, Carousel, Spin } from 'antd';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import Container from '@comp/container';
 import classnames from 'classnames';
@@ -15,6 +15,16 @@ type TypeData = typeof data[0];
 export default () => {
   const [curKey, setKey] = useState(data[0].key);
   const [curData, setData] = useState<TypeData>(data[0]);
+  const [isShow, setIsShow] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      setIsShow(true);
+    }, 2000);
+    return () => {
+      clearTimeout(id);
+    };
+  }, []);
 
   useEffect(() => {
     setData(data.find(d => d.key === curKey) || data[0]);
@@ -36,19 +46,23 @@ export default () => {
 
   return (
     <Container id="intro" title="企业简介" className={styles.intro}>
-      <div className={styles.container}>
-        <Timeline className={styles.timeline} mode="left">
-          {data.map(d => renderItem(d))}
-          <Timeline.Item dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>至今</Timeline.Item>
-        </Timeline>
-        <Card className={styles.card} bordered={false} title={curData.content || 'qw'}>
-          <Carousel className={styles.carousel} autoplay dotPosition="right">
-            {curData.album.map(data => {
-              return <img className={styles.img} src={data} key={data} />;
-            })}
-          </Carousel>
-        </Card>
-      </div>
+      <Spin tip="正在加载..." spinning={!isShow}>
+        <div className={styles.container}>
+          <Timeline className={styles.timeline} mode="left">
+            {data.map(d => renderItem(d))}
+            <Timeline.Item dot={<ClockCircleOutlined style={{ fontSize: '16px' }} />}>至今</Timeline.Item>
+          </Timeline>
+          <Card className={styles.card} bordered={false} title={curData.content || 'qw'}>
+            {isShow && (
+              <Carousel className={styles.carousel} autoplay dotPosition="right">
+                {curData.album.map(data => {
+                  return <img className={styles.img} src={data} key={data} />;
+                })}
+              </Carousel>
+            )}
+          </Card>
+        </div>
+      </Spin>
     </Container>
   );
 };
