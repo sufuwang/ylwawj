@@ -1,3 +1,18 @@
 .carousel {
-  min-height: 360px;
+  min-height: 460px;
+  padding: 10px 200px 10px 200px;
+  .img {
+    height: fit-content;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel {
+    padding: 0px;
+    min-height: 240px;
+    .img {
+      width: 100vw;
+      height: 240px !important;
+    }
+  }
 }

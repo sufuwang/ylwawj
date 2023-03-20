@@ -11,6 +11,12 @@ const data = [
   { key: 'c', label: '2012-06-12', content: '参与《秦之声》', album: Images.qzs },
 ];
 
+const getNextData = (curData: typeof data[0]) => {
+  const index = data.findIndex(d => d.key === curData.key);
+  const nextIndex = index === data.length - 1 ? 0 : index + 1;
+  return data[nextIndex];
+};
+
 type TypeData = typeof data[0];
 export default () => {
   const [curKey, setKey] = useState(data[0].key);
@@ -54,7 +60,18 @@ export default () => {
           </Timeline>
           <Card className={styles.card} bordered={false} title={curData.content || 'qw'}>
             {isShow && (
-              <Carousel className={styles.carousel} autoplay dotPosition="right">
+              <Carousel
+                className={styles.carousel}
+                autoplay
+                dotPosition="right"
+                afterChange={index => {
+                  if (index === curData.album.length - 1) {
+                    setTimeout(() => {
+                      setKey(getNextData(curData).key);
+                    }, 800);
+                  }
+                }}
+              >
                 {curData.album.map(data => {
                   return <img className={styles.img} src={data} key={data} />;
                 })}

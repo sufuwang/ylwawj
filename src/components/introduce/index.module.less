@@ -1,45 +1,66 @@
 .intro {
-  
-}
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 0px 100px 0px 140px;
-  .timeline {
-    padding-top: 40px;
-    width: 400px;
-    .timelineItem {
-      &:hover {
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0px 100px 0px 140px;
+    .timeline {
+      padding-top: 40px;
+      width: 400px;
+      .timelineItem {
+        &:hover {
+          color: #1890ff;
+          cursor: pointer;
+        }
+      }
+      .timelineSelectedItem {
+        font-weight: 700px;
         color: #1890ff;
-        cursor: pointer;
       }
     }
-    .timelineSelectedItem {
-      font-weight: 700px;
-      color: #1890ff;
+    .card {
+      width: 800px;
+      height: 100%;
+      position: sticky;
+      top: 80px;
+      margin-bottom: 40px;
+      :global(.ant-card-body) {
+        padding: 10px;
+        padding-bottom: 0px;
+      }
+      .carousel {
+        padding-bottom: 0px;
+        .img {
+          width: fit-content !important;
+          height: calc(100vh - 340px);
+        }
+        :global(.slick-slide) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
     }
   }
-  .card {
-    width: 800px;
-    height: 100%;
-    position: sticky;
-    top: 80px;
-    margin-bottom: 40px;
-    :global(.ant-card-body) {
-      padding: 10px;
-      padding-bottom: 0px;
-    }
-    .carousel {
-      padding-bottom: 0px;
-      .img {
-        width: fit-content !important;
-        height: calc(100vh - 340px);
+}
+
+@media screen and (max-width: 600px) {
+  .intro {
+    padding-top: 6px;
+    .container {
+      flex-direction: column;
+      padding: 6px 12px;
+      .timeline {
+        display: none;
       }
-      :global(.slick-slide) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      .card {
+        width: 100%;
+        .carousel {
+          width: 100%;
+          .img {
+            max-width: 90vw;
+          }
+        }
       }
     }
   }

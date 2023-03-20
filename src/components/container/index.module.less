@@ -1,10 +1,8 @@
-
-
 .container {
   padding: 60px 0px 0px 0px;
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   .title {
     padding-top: 20px;
     padding-left: 210px;
@@ -13,5 +11,17 @@
     line-height: 1.14286;
     font-weight: 600;
     font-family: SF Pro Display,SF Pro Icons,AOS Icons,Helvetica Neue,Helvetica,Arial,sans-serif;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    >span {
+      padding: 16px 0 14px 24px !important;
+    }
+    >div {
+      padding-left: 14px;
+      padding-bottom: 0px;
+    }
   }
 }

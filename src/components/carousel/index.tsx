@@ -17,7 +17,7 @@ export default () => {
   return (
     <Carousel autoplay className={styles.carousel}>
       {data.map(src => (
-        <img src={src} key={src} />
+        <img className={styles.img} src={src} key={src} />
       ))}
     </Carousel>
   );

@@ -44,7 +44,7 @@ export default ({ id, title, dataSource, isShowExtra = true }: TypeProps) => {
 
   return (
     <>
-      <Container id={id} title={title}>
+      <Container className={styles.container} id={id} title={title}>
         <div className={styles.feed}>
           {dataSource.map(item => (
             <Card

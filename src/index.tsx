@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import App from '@/App';
-import 'antd/dist/antd.css';
+import 'antd/dist/reset.css';
 import { BrowserRouter } from 'react-router-dom';
 
 const container = document.getElementById('root');

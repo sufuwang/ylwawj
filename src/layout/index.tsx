@@ -7,8 +7,10 @@ import {
   TeamOutlined,
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Menu, PageHeader } from 'antd';
+import { Menu } from 'antd';
+import { PageHeader } from '@ant-design/pro-layout';
 import { useLocation, useNavigate } from 'react-router-dom';
+import ContactUs from '@comp/contactUs';
 import styles from './index.module.less';
 
 const items = [
@@ -99,7 +101,10 @@ export default ({ children }: TypeProps) => {
           />,
         ]}
       />
-      <div className={styles.children}>{children}</div>
+      <div className={styles.children}>
+        {children}
+        <ContactUs />
+      </div>
     </>
   );
 };
