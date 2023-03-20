@@ -72,14 +72,14 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       sourcemap: false,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            vendor: ['react', 'react-router-dom', 'react-dom'],
-            ...renderChunks(dependencies),
-          },
-        },
-      },
+      // rollupOptions: {
+      //   output: {
+      //     manualChunks: {
+      //       vendor: ['react', 'react-router-dom', 'react-dom'],
+      //       ...renderChunks(dependencies),
+      //     },
+      //   },
+      // },
     },
     test: {
       globals: true,
